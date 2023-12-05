@@ -1,0 +1,233 @@
+<div class="component-wrapper  opacity-0 appear-animation">
+  <div class="title-container title">
+    <span class="title">License Dimension Features</span>
+    <ejs-tooltip
+      [cssClass]="'ejs-header-tooltip-style'"
+      [position]="'RightBottom'"
+      [offsetX]="5"
+      [offsetY]="-12"
+      [content]="infoText"
+    >
+      <svg-icon [key]="'tooltip'" [size]="'sm'"></svg-icon>
+    </ejs-tooltip>
+  </div>
+
+  <div class="grid-container">
+    <div class="grid-actions">
+      <olm-refresh-button [refreshDataFn]="loadLicenseDimensions"></olm-refresh-button>
+      <olm-filter-toggle-button (toggleFilterState)="toggleFilterButtonState()"></olm-filter-toggle-button>
+      <search-box class="search-box-without-padding-top" #searchBoxInput></search-box>
+    </div>
+
+    <grid-wrapper
+      #gridLicenseDimensions
+      class="no-checkbox-grid sticky-right-column"
+      [dataSource]="licenseDimensions$ | async"
+      [enablePersistence]="false"
+      [listOfDefaultColumns]="defaultColumns"
+      [defaultColumnOrderList]="defaultColumns"
+      [setGridStateFromBackend]="true"
+      [allowSorting]="true"
+      [allowSelection]="true"
+      (visibleColumnsEmitter)="loadLicenseDimensions()"
+      (gridStateChange)="loadLicenseDimensions($event)"
+    >
+      <e-columns>
+
+        <e-column
+          headerText="Server Name"
+          field="licenseServer"
+        >
+          <ng-template #headerTemplate let-data>
+            <ng-container *ngIf="areFiltersActive$ | async">
+              <olm-filter-dropdown
+                class="opacity-0 appear-animation"
+                [filterDropdownModel]="serverNameDropDownModel"
+                [filterStyles]="'gridHeaderFilter'"
+                [formGroup]="filterFormGroup"
+              ></olm-filter-dropdown>
+            </ng-container>
+            <ng-container *ngIf="(areFiltersActive$ | async) === false">
+              <span class="e-headertext opacity-0 appear-animation" [textContent]="'Server Name'"></span>
+            </ng-container>
+          </ng-template>
+          <ng-template #template let-data>
+            <span [innerHTML]="data.licenseServer | highlight: searchBoxInput.value"></span>
+          </ng-template>
+        </e-column>
+
+        <e-column
+          headerText="Feature Name"
+          field="licenseFeature"
+          [showInColumnChooser]="false"
+        >
+          <ng-template #headerTemplate let-data>
+            <ng-container *ngIf="areFiltersActive$ | async">
+              <olm-filter-dropdown
+                class="opacity-0 appear-animation"
+                [filterDropdownModel]="featureNameDropDownModel"
+                [filterStyles]="'gridHeaderFilter'"
+                [formGroup]="filterFormGroup"
+              ></olm-filter-dropdown>
+            </ng-container>
+            <ng-container *ngIf="(areFiltersActive$ | async) === false">
+              <span class="e-headertext opacity-0 appear-animation" [textContent]="'Feature Name'"></span>
+            </ng-container>
+          </ng-template>
+          <ng-template #template let-data>
+            <span [innerHTML]="data.licenseFeature | highlight: searchBoxInput.value"></span>
+          </ng-template>
+        </e-column>
+
+        <e-column
+          headerText="Vendor Name"
+          field="licenseVendor"
+        >
+          <ng-template #headerTemplate let-data>
+            <ng-container *ngIf="areFiltersActive$ | async">
+              <olm-filter-dropdown
+                class="opacity-0 appear-animation"
+                [filterDropdownModel]="vendorNameDropDownModel"
+                [filterStyles]="'gridHeaderFilter'"
+                [formGroup]="filterFormGroup"
+              ></olm-filter-dropdown>
+            </ng-container>
+            <ng-container *ngIf="(areFiltersActive$ | async) === false">
+              <span class="e-headertext opacity-0 appear-animation" [textContent]="'Vendor Name'"></span>
+            </ng-container>
+          </ng-template>
+          <ng-template #template let-data>
+            <span [innerHTML]="data.licenseVendor | highlight: searchBoxInput.value"></span>
+          </ng-template>
+        </e-column>
+
+        <e-column
+          headerText="License Type"
+          field="licenseType"
+        >
+          <ng-template #headerTemplate let-data>
+            <ng-container *ngIf="areFiltersActive$ | async">
+              <olm-filter-dropdown
+                class="opacity-0 appear-animation"
+                [filterDropdownModel]="licenseTypeDropDownModel"
+                [filterStyles]="'gridHeaderFilter'"
+                [formGroup]="filterFormGroup"
+              ></olm-filter-dropdown>
+            </ng-container>
+            <ng-container *ngIf="(areFiltersActive$ | async) === false">
+              <span class="e-headertext opacity-0 appear-animation" [textContent]="'License Type'"></span>
+            </ng-container>
+          </ng-template>
+          <ng-template #template let-data>
+            <span [innerHTML]="data.licenseType | highlight: searchBoxInput.value"></span>
+          </ng-template>
+        </e-column>
+        
+        <e-column
+          headerText="License Version"
+          field="licenseVersion"
+        >
+          <ng-template #template let-data>
+            <span [innerHTML]="data.licenseVersion | highlight: searchBoxInput.value"></span>
+          </ng-template>
+        </e-column>
+
+        <e-column
+          headerText="Hostname"
+          field="licenseHostname"
+          [showInColumnChooser]="false"
+        >
+          <ng-template #headerTemplate let-data>
+            <ng-container *ngIf="areFiltersActive$ | async">
+              <olm-filter-dropdown
+                class="opacity-0 appear-animation"
+                [filterDropdownModel]="hostNameDropDownModel"
+                [filterStyles]="'gridHeaderFilter'"
+                [formGroup]="filterFormGroup"
+              ></olm-filter-dropdown>
+            </ng-container>
+            <ng-container *ngIf="(areFiltersActive$ | async) === false">
+              <span class="e-headertext opacity-0 appear-animation" [textContent]="'Hostname'"></span>
+            </ng-container>
+          </ng-template>
+          <ng-template #template let-data>
+            <span [innerHTML]="data.licenseHostname | highlight: searchBoxInput.value"></span>
+          </ng-template>
+        </e-column>
+
+        <e-column
+          headerText="Additional Key"
+          field="licenseAdditionalKey"
+          [showInColumnChooser]="false"
+        >
+          <ng-template #template let-data>
+            <span [innerHTML]="data.licenseAdditionalKey | highlight: searchBoxInput.value"></span>
+          </ng-template>
+        </e-column>
+
+        <e-column
+          headerText="Candidate Expiration Date"
+          field="licenseCandidateExpirationDate"
+          [showInColumnChooser]="false"
+        >
+        </e-column>
+
+        <e-column
+          headerText="Description"
+          field="licenseDescription"
+        >
+          <ng-template #template let-data>
+            <span [innerHTML]="data.licenseDescription | highlight: searchBoxInput.value"></span>
+          </ng-template>
+        </e-column>
+
+        <e-column
+          headerText="Expiration Date"
+          field="licenseExpirationDate"
+        >
+          <ng-template #template let-data>
+            <span [innerHTML]="data.licenseExpirationDate | highlight: searchBoxInput.value"></span>
+          </ng-template>
+        </e-column>
+
+        <e-column
+          headerText="Manager Type"
+          field="licenseManagerType"
+        >
+          <ng-template #template let-data>
+            <span [innerHTML]="data.licenseManagerType | highlight: searchBoxInput.value"></span>
+          </ng-template>
+        </e-column>
+
+        <e-column
+          headerText="Package Id"
+          field="licensePackageId"
+        >
+          <ng-template #template let-data>
+            <span [innerHTML]="data.licensePackageId | highlight: searchBoxInput.value"></span>
+          </ng-template>
+        </e-column>
+
+        <e-column
+          headerText="Port"
+          field="licensePort"
+        >
+          <ng-template #template let-data>
+            <span [innerHTML]="data.licensePort | highlight: searchBoxInput.value"></span>
+          </ng-template>
+        </e-column>
+
+        <e-column
+          width="40px"
+          field=""
+          headerText=""
+          [showColumnMenu]="true"
+          [showInColumnChooser]="false"
+          [allowReordering]="false"
+          [allowSorting]="false"
+          [allowResizing]="false"
+        ></e-column>
+      </e-columns>
+    </grid-wrapper>
+  </div>
+</div>

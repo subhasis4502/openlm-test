@@ -1,0 +1,22 @@
+<olm-spinner-overlay></olm-spinner-overlay>
+
+<olm-header
+  [title]='applicationTitle'
+  [iconKey]="'licenses_logo'"
+></olm-header>
+
+
+<main class="main">
+  <olm-navbar #sidebar [navbarItems]="navbarItems"></olm-navbar>
+
+  <div
+    *ngIf="sidebar"
+    class="router-outlet-wrapper"
+    [class.content-sidenav-closed]="sidebar?.isOpen === false"
+    [class.content-sidenav-opened]="sidebar?.isOpen === true"
+  >
+    <router-outlet></router-outlet>
+  </div>
+</main>
+
+<ejs-toast #toast></ejs-toast>

@@ -1,0 +1,29 @@
+grid-wrapper {
+  height: 100%;
+
+  .e-headertext {
+    text-transform: capitalize;
+  }
+
+  .e-gridcontent {
+    max-height: calc(100% - 89px);
+    height: 100%;
+
+    .e-content {
+      height: 100% !important;
+
+      td:has(svg-icon) {
+        padding: 0 16px;
+      }
+
+      svg-icon {
+        cursor: pointer;
+        width: 100%;
+      }
+    }
+  }
+}
+
+.dialog-component {
+  transition-duration: 250ms;
+}

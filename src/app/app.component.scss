@@ -1,0 +1,22 @@
+@import 'node_modules/@openlm/openlm-common/assets/scss/variables';
+@import 'node_modules/@openlm/openlm-common/assets/scss/_mixins';
+
+.main {
+  height: calc(100% - 5rem);
+
+  .router-outlet-wrapper {
+    height: 100%;
+    padding: 2.4rem 1.6rem;
+    transition: 0.5s ease;
+  }
+
+  .router-outlet-wrapper.content-sidenav-opened {
+    margin-left: 20rem;
+    width: calc(100% - 20rem);
+  }
+
+  .router-outlet-wrapper.content-sidenav-closed {
+    margin-left: 5.7rem;
+    width: calc(100% - 5.7rem);
+  }
+}

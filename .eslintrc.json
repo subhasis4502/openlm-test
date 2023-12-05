@@ -1,0 +1,81 @@
+{
+  "root": true,
+  "ignorePatterns": [
+    "projects/**/*"
+  ],
+  "overrides": [
+    {
+      "files": [
+        "*.ts"
+      ],
+      "parserOptions": {
+        "project": [
+          "tsconfig.json",
+          "e2e/tsconfig.json"
+        ],
+        "createDefaultProgram": true
+      },
+      "extends": [
+        "plugin:@angular-eslint/recommended",
+        "plugin:@angular-eslint/template/process-inline-templates"
+      ],
+      "rules": {
+        "no-duplicate-imports": "error",
+        "no-await-in-loop": "error",
+        "no-constant-binary-expression": "error",
+        "no-constructor-return": "error",
+        "no-new-native-nonconstructor": "error",
+        "no-promise-executor-return": "error",
+        "no-self-compare": "error",
+        "no-unmodified-loop-condition": "error",
+        "no-unreachable-loop": "error",
+        "no-unused-private-class-members": "error",
+        "no-use-before-define": "error",
+        "require-atomic-updates": "error",
+        "arrow-body-style": ["error", "as-needed"],
+        "block-scoped-var": "error",
+        "camelcase": [
+          "warn",
+          {
+            "properties": "always"
+          }
+        ],
+        "consistent-return": "error",
+        "curly": "error",
+        "default-case": "error",
+        "default-case-last": "error",
+        "default-param-last": "error",
+        "eqeqeq": "error",
+        "no-alert": "error",
+        "no-console": "warn",
+        "no-else-return": "error",
+        "no-empty-function": [
+          "error",
+          {
+            "allow": ["constructors"]
+          }
+        ],
+        "no-empty-static-block": "error",
+        "no-eq-null": "error",
+        "no-inline-comments": "error",
+        "no-lone-blocks": "error",
+        "no-lonely-if": "error",
+        "no-undef-init": "error",
+        "no-var": "error",
+        "no-useless-return": "error",
+        "prefer-const": "error",
+        "require-await": "error",
+        "spaced-comment": "error"
+      }
+    },
+    {
+      "files": [
+        "*.html"
+      ],
+      "extends": [
+        "plugin:@angular-eslint/template/recommended"
+      ],
+      "rules": {}
+    }
+  ]
+}

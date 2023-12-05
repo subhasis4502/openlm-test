@@ -1,0 +1,5 @@
+/src/*.js
+/src/polyfills.ts
+/src/main.ts
+/src/bootstrap.ts
+/src/test.ts

@@ -1,0 +1,119 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <title>Licenses</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="icon" type="image/x-icon" href="favicon.ico">
+  <link rel="preload" href="styles.css" as="style">
+  <style>
+    @keyframes outer-circle-anim {
+      0% {
+        stroke-dasharray: 0, 125;
+      }
+      50% {
+        stroke-dasharray: 125, 125;
+        stroke-dashoffset: 0;
+      }
+      100% {
+        stroke-dashoffset: -125;
+      }
+    }
+
+    @keyframes inner-circle-anim {
+      0% {
+        transform: scale(0.8);
+      }
+      50% {
+        transform: scale(0.9);
+      }
+      100% {
+        transform: scale(0.8);
+      }
+    }
+
+    @keyframes logo-fade-in-anim {
+      from {
+        opacity: 0;
+      }
+      to {
+        opacity: 1;
+      }
+    }
+
+    @keyframes logo-fade-out-anim {
+      from {
+        opacity: 1;
+      }
+      to {
+        opacity: 0;
+      }
+    }
+
+    .fade-in-startup-spinner {
+      animation: logo-fade-in-anim 0.1s 1;
+    }
+
+    .fade-out-startup-spinner-overlay {
+      animation: logo-fade-out-anim 0.4s 1 forwards;
+    }
+
+    .startup-spinner-overlay {
+      position: absolute;
+      display: flex;
+      z-index: 999999999999;
+      top: 0;
+      bottom: 0;
+      right: 0;
+      left: 0;
+      background-color: #fbf9f6;
+    }
+
+    .startup-spinner-overlay div svg g g g {
+      transform: matrix(0.982973, 0, 0, 0.997946, 0.59634, 0.07033);
+    }
+
+    .startup-spinner-overlay div svg g g g path {
+      fill: none;
+      fill-opacity: 1;
+      stroke: #463943;
+      stroke-width: 11.5;
+      stroke-miterlimit: 4;
+      stroke-opacity: 1;
+      animation: outer-circle-anim 2s ease infinite;
+      stroke-dasharray: 125;
+    }
+
+    .startup-spinner-overlay div svg g g path {
+      fill: #2f79eb;
+      transform: scale(0.8);
+      transform-origin: center;
+      animation: inner-circle-anim 2s ease-out infinite;
+    }
+
+  </style>
+</head>
+<body>
+<div class="startup-spinner-overlay">
+  <div style="margin: auto;" class="fade-in-startup-spinner">
+    <svg id="logo-icon" viewBox="0 0 62.99 62.99" width="250px">
+      <g id="Layer_2" data-name="Layer 2">
+        <g id="Layer_1-2" data-name="Layer 1">
+          <g id="g6507">
+            <path
+              d="m 31.5003,6.7993934 c 0,0 3.277174,-0.00502 4.915761,-0.00752 10.461127,-0.015984 20.211812,7.7823106 20.228021,18.1065226 0.007,4.436876 0.01393,8.873752 0.0209,13.310628 0.0136,8.661306 -7.172486,15.748292 -15.73016,17.669002 -1.294272,0.29049 -2.614516,0.484216 -3.941834,0.486247 -3.589084,0.0055 -7.178169,0.01098 -10.767253,0.01647 -10.65536,0.01631 -19.7645671,-8.58867 -19.7804286,-19.10458 -4.457e-4,-0.295519 -8.851e-4,-0.591037 -0.00133,-0.886556 -4.395e-4,-0.287308 -8.873e-4,-0.574617 -0.00133,-0.861926 -0.00204,-1.301099 -0.00617,-3.9033 -0.00617,-3.9033"
+              id="path5847"
+            />
+          </g>
+          <path
+            d="m 46,28.64 v 5.71 A 11.66,11.66 0 0 1 34.35,46 h -5.9 A 11.65,11.65 0 0 1 17,34.35 V 28.64 A 11.66,11.66 0 0 1 28.64,17 h 5.71 A 11.66,11.66 0 0 1 46,28.64 Z"
+            id="path5849"
+          />
+        </g>
+      </g>
+    </svg>
+  </div>
+</div>
+<app-root></app-root>
+</body>
+</html>

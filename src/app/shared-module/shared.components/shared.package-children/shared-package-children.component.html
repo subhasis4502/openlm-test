@@ -1,0 +1,33 @@
+<ejs-dialog
+  #packageChildrenDialog
+  class="dialog-component"
+  [isModal]="true"
+  [showCloseIcon]="true"
+  [visible]="isDialogVisible$ | async"
+  [header]="(parentPackageName$ | async) + '  Licenses'"
+  (overlayClick)="changeVisibilityStateFn(false)"
+>
+  <ng-template #content>
+    <grid-wrapper
+      #packageChildrenGrid
+      class="no-checkbox-grid sticky-right-column"
+      [allowSorting]="true"
+      [enablePersistence]="false"
+      [listOfDefaultColumns]="defaultColumns"
+      [defaultColumnOrderList]="defaultColumns"
+      [dataSource]="dataSource$ | async"
+      [setGridStateFromBackend]="true"
+      (gridStateChange)="loadDataFn($event)"
+      [allowSelection]="false"
+      [showColumnMenu]="false"
+    >
+      <e-columns>
+        <e-column
+          *ngFor="let column of defaultColumns"
+          [field]="column"
+          [headerText]="column | fieldNameToHeaderText"
+        ></e-column>
+      </e-columns>
+    </grid-wrapper>
+  </ng-template>
+</ejs-dialog>

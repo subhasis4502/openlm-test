@@ -1,0 +1,87 @@
+@import 'node_modules/@openlm/openlm-common/assets/scss/openlm-common-styles';
+@import 'node_modules/@openlm/openlm-common/assets/scss/variables';
+@import 'node_modules/@openlm/openlm-common/assets/scss/mixins';
+
+html, body {
+  position: fixed;
+  height: 100%;
+  width: 100%;
+  font-size: $font-size-default;
+  @media (min-width: 1600px) {
+    font-size: $font-size-1600;
+  }
+  @media(min-width: 1920px) {
+    font-size: $font-size-full-hd;
+  }
+}
+
+body {
+  @include font-OpenSans();
+
+  margin: 0;
+  padding: 0;
+  background-color: $background-milk-white;
+}
+
+header {
+  background-color: $background-dark-blue;
+}
+
+.search-box-without-padding-top {
+  ejs-textbox {
+    span.e-input-group {
+      height: 2.4rem !important;
+    }
+
+    input.e-input {
+      padding-top: 0 !important;
+      height: 2.4rem;
+    }
+  }
+}
+
+@keyframes appear-animation {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+@-webkit-keyframes appear-animation {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+.appear-animation {
+  animation: appear-animation 0.35s 1;
+  -webkit-animation: appear-animation 0.35s 1;
+
+  animation-delay: 0.15s;
+  -webkit-animation-delay: 0.15s;
+  -webkit-animation-fill-mode: forwards;
+}
+
+.appear-animation-25ms-delay {
+  animation: appear-animation 0.5s 1;
+  -webkit-animation: appear-animation 0.5s 1;
+  animation-fill-mode: forwards;
+
+  animation-delay: 0.25s;
+  -webkit-animation-delay: 0.25s;
+  -webkit-animation-fill-mode: forwards;
+}
+
+.opacity-0 {
+  opacity: 0;
+}
+
+svg {
+  display: flex;
+  align-items: flex-end;
+}

@@ -1,0 +1,78 @@
+@import "node_modules/@openlm/openlm-common/assets/scss/_variables";
+
+.component-wrapper {
+  height: 100%;
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  gap: 1.6rem;
+
+  .title {
+    font-size: 1.8rem;
+    text-transform: uppercase;
+
+    &-container {
+      display: flex;
+      flex-direction: row;
+      justify-content: flex-start;
+      align-items: center;
+      gap: 1.6rem;
+
+      svg-icon {
+        cursor: pointer;
+      }
+    }
+  }
+
+  .grid-container {
+    display: flex;
+    flex-direction: column;
+    height: calc(100% - 4rem);
+    gap: 1.2rem;
+
+    grid-wrapper {
+      height: calc(100% - 3.6rem);
+
+      .e-gridcontent {
+        max-height: calc(100% - 89px);
+        height: 100%;
+
+        .e-content {
+          height: 100% !important;
+
+          table {
+            tr {
+              opacity: 0;
+              animation: appear-animation 0.35s 1;
+              -webkit-animation: appear-animation 0.35s 1;
+
+              animation-delay: 0.15s;
+              -webkit-animation-delay: 0.15s;
+              -webkit-animation-fill-mode: forwards;
+            }
+          }
+        }
+      }
+    }
+
+    .grid-actions {
+      display: flex;
+      flex-direction: row;
+      justify-content: flex-end;
+      min-height: 2.5rem;
+      gap: 1.6rem;
+      align-items: flex-end;
+    }
+  }
+}
+
+svg.filter-active {
+
+  rect {
+    stroke: $main;
+  }
+
+  path {
+    fill: $main;
+  }
+}

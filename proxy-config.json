@@ -1,0 +1,12 @@
+{
+  "/operationalAPI/graphql": {
+    "target": "http://10.10.0.207:8100/",
+    "secure": false,
+    "pathRewrite": {"^/operationalAPI": ""}
+  },
+  "/testAPI/graphql": {
+    "target": "http://127.0.0.1:8080/",
+    "secure": false,
+    "pathRewrite": {"^/testAPI": ""}
+  }
+}
